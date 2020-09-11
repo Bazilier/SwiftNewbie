@@ -32,8 +32,6 @@ class Car {
     let color:UIColor
     var engineState:EngineState
     var windowsState:WindowsState
-
-    
     
     init(brand: String, model: String, yearMade: Int, mileage:Int, color:UIColor, engine: EngineState, windows:WindowsState) {
         self.brand = brand
@@ -65,52 +63,54 @@ class Car {
     
 }
 
-        class Trunkcar:Car {
-            var foldSeats:FoldSeats
-            init(brand: String, model: String, yearMade: Int, mileage:Int, color:UIColor, engine: EngineState, windows:WindowsState, foldSeats: FoldSeats) {
-                self.foldSeats = foldSeats
-                super.init(brand: brand, model: model, yearMade: yearMade, mileage: mileage, color: color, engine: engine, windows: windows)
-            }
-            
-            func seatsDown() {
-                foldSeats = .fold
-                print("Кресла сложены.")
-            }
-            
-            func seatsUp() {
-                foldSeats = .unfold
-                print("Кресла разложены.")
-            }
+class Trunkcar:Car {
+    var foldSeats:FoldSeats
+    
+    init(brand: String, model: String, yearMade: Int, mileage:Int, color:UIColor, engine: EngineState, windows:WindowsState, foldSeats: FoldSeats) {
+        self.foldSeats = foldSeats
+        super.init(brand: brand, model: model, yearMade: yearMade, mileage: mileage, color: color, engine: engine, windows: windows)
+    }
+    
+    func seatsDown() {
+        foldSeats = .fold
+        print("Кресла сложены.")
+    }
+    
+    func seatsUp() {
+        foldSeats = .unfold
+        print("Кресла разложены.")
+    }
+    
 }
+
+
+class Sportcar:Car {
+    var sportMode:SportMode
     
+    init(brand: String, model: String, yearMade: Int, mileage: Int, color: UIColor, engine: EngineState, windows: WindowsState, sportMode: SportMode) {
+        self.sportMode = sportMode
+        super.init(brand: brand, model: model, yearMade: yearMade, mileage: mileage, color: color, engine: engine, windows: windows)
+    }
     
-        class Sportcar:Car {
-            var sportMode:SportMode
-            init(brand: String, model: String, yearMade: Int, mileage: Int, color: UIColor, engine: EngineState, windows: WindowsState, sportMode: SportMode) {
-                self.sportMode = sportMode
-                super.init(brand: brand, model: model, yearMade: yearMade, mileage: mileage, color: color, engine: engine, windows: windows)
-            }
-            
-            func sportOn() {
-                sportMode = .on
-                print ("Спортивный режим включен.")
-            }
-            
-            func sportOff() {
-                sportMode = .off
-                print("Спортивный режим выключен.")
-            }
-            
-            
-        }
+    func sportOn() {
+        sportMode = .on
+        print ("Спортивный режим включен.")
+    }
     
-            let car1 = Sportcar(brand: "Porsche", model: "911", yearMade: 2018, mileage: 3456, color: .red, engine: .run, windows: .close, sportMode: .on)
-            
-            let car2 = Sportcar(brand: "Audi", model: "R8", yearMade: 2016, mileage: 6543, color: .black, engine: .stop, windows: .open, sportMode: .off)
-            
-            let car3 = Trunkcar(brand:  "Volkswagen", model: "Transporter", yearMade: 2010, mileage: 67485, color: .green, engine: .run, windows: .close, foldSeats: .fold)
-            
-            let car4 = Trunkcar(brand: "GAZ", model: "Gazelle", yearMade: 2012, mileage: 43782, color: .yellow, engine: .run, windows: .open, foldSeats: .unfold)
+    func sportOff() {
+        sportMode = .off
+        print("Спортивный режим выключен.")
+    }
+    
+}
+
+let car1 = Sportcar(brand: "Porsche", model: "911", yearMade: 2018, mileage: 3456, color: .red, engine: .run, windows: .close, sportMode: .on)
+
+let car2 = Sportcar(brand: "Audi", model: "R8", yearMade: 2016, mileage: 6543, color: .black, engine: .stop, windows: .open, sportMode: .off)
+
+let car3 = Trunkcar(brand:  "Volkswagen", model: "Transporter", yearMade: 2010, mileage: 67485, color: .green, engine: .run, windows: .close, foldSeats: .fold)
+
+let car4 = Trunkcar(brand: "GAZ", model: "Gazelle", yearMade: 2012, mileage: 43782, color: .yellow, engine: .run, windows: .open, foldSeats: .unfold)
 
 print(car1.model)
 print(car2.sportMode)
